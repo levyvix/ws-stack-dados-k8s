@@ -189,21 +189,21 @@ class MinioStorage(object):
             print(f"file location: {object_name}")
 
             try:
-                with tempfile.NamedTemporaryFile(suffix=".parquet") as temp_file:
+                # store data in parquet format and upload to aws s3
+                object_file_name = object_name.split("/")[-1]
+                with open(f"{object_file_name}.parquet", "wb") as f:
+                    pq.write_table(data, f)
 
-                    pq.write_table(data, temp_file.name)
-                    temp_file.seek(0)
+                put_data = self.client.fput_object(
+                    self.bucket_name,
+                    object_name=object_name + ".parquet",
+                    file_path=f"{object_file_name}.parquet",
+                    content_type='application/parquet'
+                )
 
-                    put_data = self.client.put_object(
-                        bucket_name="landing",
-                        object_name=f"{object_name}.parquet",
-                        data=temp_file,
-                        length=os.path.getsize(temp_file.name),
-                        content_type='application/octet-stream'
-                    )
+                os.remove(f"{object_file_name}.parquet")
 
-                    return put_data
-
+                return put_data
             except S3Error as exc:
                 print(f"error occurred while uploading data, {exc}")
 

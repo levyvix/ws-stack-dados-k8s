@@ -2,11 +2,11 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: minio-tenant
-  namespace: argocd
+  namespace: gitops
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/owshq-academy/ws-stack-dados-k8s.git'
+    repoURL: 'https://github.com/levyvix/ws-stack-dados-k8s.git'
     path: infra/src/helm-charts/minio-tenant
     targetRevision: HEAD
     helm:

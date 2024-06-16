@@ -82,7 +82,7 @@ images:
     repository: owshq/owshq-apache-airflow
     tag: 2.8.1
     # repository: ~
-    # tag: ~ 
+    # tag: ~
     # Specifying digest takes precedence over tag.
     digest: ~
     pullPolicy: Always
@@ -272,7 +272,7 @@ executor: "CeleryExecutor"
 allowPodLaunching: true
 
 # Environment variables for all airflow containers
-env: 
+env:
  - name: "AIRFLOW__CORE__DAGBAG_IMPORT_TIMEOUT"
    value: "120"
 
@@ -2449,7 +2449,7 @@ dags:
     # git repo clone url
     # ssh example: git@github.com:apache/airflow.git
     # https example: https://github.com/apache/airflow.git
-    repo: https://github.com/owshq-academy/ws-stack-dados-k8s.git
+    repo: https://github.com/levyvix/ws-stack-dados-k8s.git
     branch: master
     rev: HEAD
     # The git revision (branch, tag, or hash) to check out, v4 only

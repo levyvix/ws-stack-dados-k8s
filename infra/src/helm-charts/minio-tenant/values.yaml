@@ -35,7 +35,7 @@ tenant:
       ## custom name for the pool
       name: pool-datalake-0
       ## volumesPerServer specifies the number of volumes attached per MinIO Tenant Pod / Server.
-      volumesPerServer: 2
+      volumesPerServer: 1
       ## size specifies the capacity per volume
       size: 5Gi
       ## storageClass specifies the storage class name to be used for this pool

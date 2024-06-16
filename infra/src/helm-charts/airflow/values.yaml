@@ -2460,7 +2460,7 @@ dags:
     # subpath within the repo where dags are located
     # should be "" if dags are at repo root
     subPath: "data/dags"
-    credentialsSecret: git-credentials
+    # credentialsSecret: git-credentials
     #
     #
     # If you are using an ssh clone url, you can load
@@ -2539,7 +2539,7 @@ logs:
     # Enable persistent volume for storing logs
     enabled: false
     # Volume size for logs
-    size: 100Gi
+    size: 10Gi
     # Annotations for the logs PVC
     annotations: {}
     # If using a custom storageClass, pass name here
